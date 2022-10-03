@@ -19,3 +19,10 @@ void loop() {
   }
   delay(30);
 }
+
+void set_period(int period){
+  
+}
+void set_duty(int duty){
+  
+}
