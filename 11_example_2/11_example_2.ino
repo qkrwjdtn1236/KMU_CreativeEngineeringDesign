@@ -21,7 +21,7 @@
 
 // Target Distance
 #define _TARGET_LOW  180.0
-#define _TARGET_HIGH 220.0
+#define _TARGET_HIGH 360.0
 
 // duty duration for myservo.writeMicroseconds()
 // NEEDS TUNING (servo by servo)
@@ -76,10 +76,10 @@ void loop() {
   }
 
   // Apply ema filter here  
-  dist_ema = dist_raw;
+  dist_ema = (_EMA_ALPHA * dist_raw) + (1-_EMA_ALPHA) * dist_prev;
 
   // adjust servo position according to the USS read value
-
+  
   // add your code here!
 
   //180 도 = 2400ms
@@ -148,7 +148,9 @@ int servoMotorMS(float readEcho){
   if(readEcho < _TARGET_LOW)
     return _DUTY_MIN;
     
-  
+  if(readEcho > _TARGET_HIGH)
+    return _DUTY_HIGH;
+    
   readEcho = ((float)(readEcho-_TARGET_LOW)/(_TARGET_HIGH-_TARGET_LOW))*(float)_DUTY_MAX;
   
   return (int)readEcho;
