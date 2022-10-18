@@ -87,7 +87,7 @@ void loop() {
   // 90도 = 925ms
   
   // Use _TARGET_LOW, _TARGTE_HIGH
-  float arc = servoMotorMS(dist_raw);
+  float arc = servoMotorMS(dist_ema);
   myservo.writeMicroseconds(arc);
 
   // output the distance to the serial port
@@ -149,9 +149,13 @@ int servoMotorMS(float readEcho){
     return _DUTY_MIN;
     
   if(readEcho > _TARGET_HIGH)
-    return _DUTY_HIGH;
-    
-  readEcho = ((float)(readEcho-_TARGET_LOW)/(_TARGET_HIGH-_TARGET_LOW))*(float)_DUTY_MAX;
+    return _DUTY_MAX;
+//  float case1 = _TARGET_HIGH - readEcho;
+//  float case2 = readEcho - _TARGET_LOW;
+//  float chooseCase = case1<case2 ? case2 : case1; 
+    float chooseCase = readEcho - _TARGET_LOW;
+
+  readEcho = ((chooseCase*1.5)/(_TARGET_HIGH-_TARGET_LOW))*(float)_DUTY_MAX;
   
   return (int)readEcho;
 }
