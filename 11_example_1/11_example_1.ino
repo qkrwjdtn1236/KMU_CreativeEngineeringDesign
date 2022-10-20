@@ -28,7 +28,7 @@
  
 #define _DUTY_MIN 550 // servo full clockwise position (0 degree)
 //#define _DUTY_NEU 925 // servo neutral position (90 degree)
-#define _DUTY_NEU 1475 // servo neutral position (90 degree)
+#define _DUTY_NEU 925 // servo neutral position (90 degree)
 #define _DUTY_MAX 2400 // servo full counterclockwise position (180 degree)
 
 // global variables
@@ -126,25 +126,9 @@ float USS_measure(int TRIG, int ECHO)
 }
 
 int servoMotorMS(float readEcho){
-  //180 도 = 2400ms
-  // 0도 = 550ms
-  // 90도 = 925ms
-//  if (readEcho < _TARGET_LOW)
-//    return _DUTY_MIN;
-//
-//  if (readEcho> _DUTY_MAX)
-//    return _DUTY_MIN;
-//  int case1 = (int)map(readEcho,_TARGET_LOW,(_TARGET_HIGH - _TARGET_LOW),_DUTY_MIN,_DUTY_NEU);
-//  int case2 = (int)map(readEcho,(_TARGET_HIGH-_TARGET_LOW),_TARGET_HIGH,_DUTY_NEU,_DUTY_MAX);
-//  
-//  
-//  int case1 = _DUTY_MIN + (readEcho - _TARGET_LOW) * ((_DUTY_NEU - _DUTY_MIN)/90);
-//  int case2 = _DUTY_MIN + (_TARGET_HIGH - readEcho) * ((_DUTY_MAX - _DUTY_NEU)/90);
-//   
-//  
-//  Serial.print(",case1:"); Serial.print(case1);  
-//  Serial.print(",case2:");  Serial.print(case2);
-//  return (case1>case2)?case1:case2;
+  // #define _DUTY_MIN 550 // servo full clockwise position (0 degree)
+  // #define _DUTY_NEU 925 // servo neutral position (90 degree)
+  // #define _DUTY_MAX 2400 // servo full counterclockwise position (180 degree)
   if(readEcho < _TARGET_LOW)
     return _DUTY_MIN;
     

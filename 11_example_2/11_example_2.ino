@@ -26,10 +26,10 @@
 // duty duration for myservo.writeMicroseconds()
 // NEEDS TUNING (servo by servo)
  
-#define _DUTY_MIN 550 // servo full clockwise position (0 degree)
+#define _DUTY_MIN 500 // servo full clockwise position (0 degree)
 //#define _DUTY_NEU 925 // servo neutral position (90 degree)
-#define _DUTY_NEU 1475 // servo neutral position (90 degree)
-#define _DUTY_MAX 2400 // servo full counterclockwise position (180 degree)
+#define _DUTY_NEU 1500 // servo neutral position (90 degree)
+#define _DUTY_MAX 2450 // servo full counterclockwise position (180 degree)
 
 // global variables
 float  dist_ema, dist_prev = _DIST_MAX; // unit: mm
