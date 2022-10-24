@@ -22,7 +22,7 @@ float dist_prev = _DIST_MAX;        // Distance last-measured
 float dist_ema;                     // EMA distance
 
 
-float distanceLog[N] = {0,};
+// float distanceLog[N] = {0,};
 
 
 float sort(float arr[],int length);
@@ -68,24 +68,23 @@ void loop() {
   
   // Modify the below line to implement the EMA equation
   dist_ema = (_EMA_ALPHA * dist_raw) + ((1- _EMA_ALPHA) * dist_ema); // ema 측정
-
-  for(int i = 1;i<N;i++){
-    distanceLog[i-1] = distanceLog[i];
-  }
-  distanceLog[N] = dist_ema;
-  int length = (int)sizeof(distanceLog)/sizeof(distanceLog[0]);
-
-  for(int i = 0;i<length-1;i++){
-    for(int j = 0;j<length-1-i;j++){
-      if(distanceLog[j] > distanceLog[j+1]){
-        int temp = distanceLog[j];
-        distanceLog[j] = distanceLog[j+1];
-        distanceLog[j+1] = temp;
-      }
-    }
-  }
-  dist_ema = distanceLog[length/2]; //N 개 중에서 가장 중앙값은 값 추출 후 dist_ema에 치환
-  
+//
+//  for(int i = 1;i<N;i++){
+//    distanceLog[i-1] = distanceLog[i];
+//  }
+//  distanceLog[N] = dist_ema;
+//  int length = (int)sizeof(distanceLog)/sizeof(distanceLog[0]);
+//
+//  for(int i = 0;i<length-1;i++){
+//    for(int j = 0;j<length-1-i;j++){
+//      if(distanceLog[j] > distanceLog[j+1]){
+//        int temp = distanceLog[j];
+//        distanceLog[j] = distanceLog[j+1];
+//        distanceLog[j+1] = temp;
+//      }
+//    }
+//  }
+//  dist_ema = distanceLog[length/2]; //N 개 중에서 가장 중앙값은 값 추출 후 dist_ema에 치환
   
   // output the distance to the serial port
   Serial.print("Min:");   Serial.print(_DIST_MIN);
