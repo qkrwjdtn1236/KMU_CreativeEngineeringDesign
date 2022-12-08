@@ -27,8 +27,6 @@ void loop()
   // Take a median value from multiple measurements
   x = ir_sensor_filtered(20, 0.5); // Replace n with your desired value
   Serial.print("FLT:"); Serial.println(x);
-//  Serial.print("mm:"); Serial.println((0.0015*pow(x,2))+(-1.83*x)+541);
-  Serial.print("mm:"); Serial.println((0.00174*pow(a_value,2))+(-2.04*a_value)+600);
 }
 
 unsigned int ir_sensor_filtered(unsigned int n, float position)
