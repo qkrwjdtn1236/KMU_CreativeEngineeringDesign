@@ -17,13 +17,13 @@
 // Servo adjustment
 #define _DUTY_NEU 1600 // Servo angle: 0 degree
 #define _DUTY_MAX 2500  // Servo angle: D degree
-#define _DUTY_MIN 500   // Servo angle: E degree 500
+#define _DUTY_MIN 550   // Servo angle: E degree 500
 #define _SERVO_ANGLE_DIFF 100 // Replace with |D - E| degree
 #define _SERVO_SPEED 60 // servo speed limit (unit: degree/second)
 
 // PID parameters
-#define _KP 1.7 // proportional gain
-#define _KD 250  // derivative gain
+#define _KP 1.8 // proportional gain
+#define _KD 230  // derivative gain
 //#define _KI 0 // integral gain
 
 // global variables
